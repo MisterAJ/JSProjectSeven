@@ -1,25 +1,18 @@
 'use strict';
 
-const json = {
-    "point": "40.266044,-74.718479",
-    "homeTeam":"Lawrence Library",
-    "awayTeam":"LUGip",
-    "markerImage":"images/red.png",
-    "information": "Linux users group meets second Wednesday of each month.",
-    "fixture":"Wednesday 7pm",
-    "capacity":"",
-    "previousScore":""
-};
-
 const express = require('express');
+const Twit = require('twit');
+const login = require(__dirname + '/config.js');
 
+const T = new Twit(login);
 const app = express();
+
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/templates');
 
 app.get('/', function (req, res) {
-    res.render('index');
+    res.send();
 });
 
 app.get('/:id', function (req, res) {
@@ -31,3 +24,6 @@ app.get('/:id', function (req, res) {
 app.listen(80, function () {
     console.log('Frontend Server running on port 80')
 });
+
+
+
