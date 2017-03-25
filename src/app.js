@@ -28,6 +28,6 @@ app.get('/:id', function (req, res) {
     res.send(post);
 });
 
-app.listen(8080, function () {
-    console.log('Frontend Server running on port 8080')
+app.listen(80, function () {
+    console.log('Frontend Server running on port 80')
 });
