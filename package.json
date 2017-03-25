@@ -1,0 +1,11 @@
+{
+  "name": "Treehouse-Twitter-App",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "pug": "^2.0.0-beta11"
+  }
+}
