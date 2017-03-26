@@ -12,13 +12,11 @@ app.set('view engine', 'pug');
 app.set('views', __dirname + '/templates');
 
 app.get('/', function (req, res) {
-    res.send();
+    res.render(__dirname + '/templates/index.pug')
 });
 
 app.get('/:id', function (req, res) {
-    const id = req.params.id;
-    const post = json[id];
-    res.send(post);
+    res.send('this');
 });
 
 app.listen(80, function () {
