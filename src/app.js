@@ -10,9 +10,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use((req, res, next) => {
     const user = twit.getUser(login);
-    req.directMessages = twit.getDirectMessages(user);
     req.timelineTweets = twit.getTimeline(user);
-    req.followingUsers = twit.getFollowing(user);
     next()
 });
 
@@ -20,8 +18,11 @@ app.set('view engine', 'pug');
 app.set('views', __dirname + '/templates');
 
 app.get('/', function (req, res) {
-    res.render(__dirname + '/templates/index.pug');
-    console.log(req.timelineTweets);
+
+    req.timelineTweets.then(function(info) {
+        res.render(__dirname + '/templates/index.pug',{timeline: info.data});
+        console.log(info.data);
+    })
 });
 
 app.listen(80, function () {
