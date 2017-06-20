@@ -2,11 +2,15 @@
   "name": "Treehouse-Twitter-App",
   "version": "1.0.0",
   "scripts": {
-    "start": "node ./src/app.js"
+    "start": "node ./src/app.js",
+    "devstart": "nodemon ./src/app.js"
   },
   "dependencies": {
     "express": "^4.15.2",
     "pug": "^2.0.0-beta11",
     "twit": "^2.2.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

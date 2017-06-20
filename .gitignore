@@ -1,10 +1,12 @@
 .DS_Store
 .sass-cache
 /node_modules
-/src/config.js
+/src/config/config.js
 .idea/JSProjectSeven.iml
 .idea/misc.xml
 .idea/modules.xml
 .idea/watcherTasks.xml
 .idea/workspace.xml
 .idea/inspectionProfiles/
+/config/config.js
+.idea/Twitter-API-Demo.iml

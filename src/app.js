@@ -4,10 +4,17 @@
 
 // Set up Express, Twit and Twit's Config file
 const express = require('express');
-const login = require(__dirname + '/config.js');
-const twit = require(__dirname + '/twit.js');
-
+const login = require(__dirname + '/config/config.js');
+const twit = require(__dirname + '/data/twit.js');
+const index = require('./routes/index');
 const app = express();
+
+// Set pug to control the view engine
+app.set('view engine', 'pug');
+
+// Set the template directory
+app.set('views', __dirname + '/templates');
+
 
 // Assign directory for static resources
 app.use(express.static(__dirname + '/public'));
@@ -24,32 +31,8 @@ app.use((req, res, next) => {
     next()
 });
 
-// Set pug to control the view engine
-app.set('view engine', 'pug');
-// Set the template directory
-app.set('views', __dirname + '/templates');
 
-// Get handler for the main page
-app.get('/', function (req, res) {
-    let timeline;
-    let following;
-    let messages;
-    // Nested promise objects to assure that the twitter objects have loaded before
-    // sending them along with the view
-    req.timelineTweets.then(function(info) {
-        timeline = info.data;
-        req.directMessages.then(function (info) {
-            messages = info.data;
-            req.followingUsers.then(function (info) {
-                following = info.data.users;
-                // rendering page and passing twit objects with the response
-                res.render(__dirname + '/templates/index.pug',{timeline: timeline,
-                                                                following: following,
-                                                                messages: messages});
-            })
-        })
-    })
-});
+app.use("/", index);
 
 // Start web server to listen on port 8080
 app.listen(8080, function () {

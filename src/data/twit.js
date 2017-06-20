@@ -1,5 +1,5 @@
 // Enables the Twit plugin to be used
-const Twit = require('twit');
+const Twit = require('src/data/twit');
 
 // This function takes a twitter OAuth object and pulls a User object
 function getUser(login) {
@@ -26,5 +26,3 @@ module.exports.getUser = getUser;
 module.exports.getDirectMessages = getDirectMessages;
 module.exports.getTimeline = getTimeline;
 module.exports.getFollowing = getFollowing;
-
-
